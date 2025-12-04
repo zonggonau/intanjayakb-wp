@@ -18,7 +18,7 @@
     </div>
 
     <header class="classic-header">
-        <p class="classic-subtitle">WEBSITE RESMI PEMERINTAH</p>
+        <p class="classic-subtitle">WEBSITE RESMI PEMERINTAH_S</p>
         <h1 class="classic-title">KABUPATEN INTAN JAYA</h1>
         <p class="classic-url">www.intanjayakab.go.id</p>
     </header>
