@@ -1,0 +1,217 @@
+/* FONT CLASSIC */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;500;700&display=swap');
+
+/* GLOBAL */
+body, html {
+    margin: 0;
+    background: #f7f3e9; /* Cream classic */
+    font-family: "Merriweather", serif;
+    color: #3b3b3b;
+}
+
+.classic-container {
+    padding: 40px 20px 60px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* LOGO BOX – Classic Frame */
+.classic-logo-box {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto -5px;
+    border: 2px solid #d4c6a8;
+    background: #fffdf8;
+    border-radius: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.classic-logo {
+    width: 300px;
+    height: auto;
+}
+
+/* HEADER */
+.classic-header .classic-subtitle {
+    font-size: 12px;
+    opacity: .7;
+    margin: 16px 0 4px;
+    letter-spacing: 1px;
+}
+
+.classic-header .classic-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    color: #2c2a28;
+    text-transform: uppercase;
+}
+
+.classic-url {
+    margin-top: 3px;
+    font-size: 14px;
+    opacity: .8;
+}
+
+/* ICON GRID – Classic Minimal */
+.classic-grid {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.classic-item {
+    width: 130px;
+    height: 130px;
+    background: #fffdf8;
+    border: 1px solid #e6ddcc;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #3a3a3a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: 0.15s ease;
+    font-family: "Inter", sans-serif;
+}
+
+.classic-item i {
+    font-size: 26px;
+    color: #8b6b32; /* Gold-brown classic */
+    margin-bottom: 10px;
+}
+
+.classic-item:hover {
+    transform: translateY(-5px);
+    border-color: #c4b79f;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.classic-item span {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* BUTTON */
+.classic-btn {
+    background: #8b6b32;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+}
+.classic-btn:hover {
+    background: #a38244;
+}
+
+/* FOOTER */
+.classic-footer {
+    margin-top: auto;
+    font-size: 12px;
+    opacity: .7;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px) {
+    .classic-item {
+        width: 95px;
+        height: 95px;
+    }
+    .classic-item i {
+        font-size: 20px;
+    }
+    .classic-title {
+        font-size: 26px;
+    }
+}
+
+/* Tambah jarak antara icon grid dan tombol lihat tampilan penuh */
+.classic-btn-wrap {
+    margin-top: 40px !important;   /* Tambahkan jarak besar */
+    margin-bottom: 30px !important;
+}
+
+/* Tambah jarak antara tombol dan footer */
+.classic-footer {
+    margin-top: 50px !important;   /* Footer turun lebih jauh */
+}
+
+/* Warna kartu modern untuk classic-item */
+.classic-item.bg-blue { background-color: #2563eb; color:#fff; border:none; }
+.classic-item.bg-cyan { background-color: #06b6d4; color:#fff; border:none; }
+.classic-item.bg-red { background-color: #ef4444; color:#fff; border:none; }
+.classic-item.bg-green { background-color: #10b981; color:#fff; border:none; }
+.classic-item.bg-grey { background-color: #64748b; color:#fff; border:none; }
+.classic-item.bg-yellow { background-color: #f59e0b; color:#fff; border:none; }
+.classic-item.bg-orange { background-color: #f97316; color:#fff; border:none; }
+.classic-item.bg-teal { background-color: #14b8a6; color:#fff; border:none; }
+.classic-item.bg-blue-light { background-color: #38bdf8; color:#0b1225; border:none; }
+.classic-item.bg-red-dark { background-color: #b91c1c; color:#fff; border:none; }
+.classic-item.bg-brown { background-color: #7c3f2c; color:#fff; border:none; }
+.classic-item.bg-green-bright { background-color: #22c55e; color:#fff; border:none; }
+.classic-item.bg-blue-dark { background-color: #1f3a8a; color:#fff; border:none; }
+.classic-item.bg-red-bright { background-color: #dc2626; color:#fff; border:none; }
+.classic-item.bg-green-light { background-color: #34d399; color:#fff; border:none; }
+
+.classic-item.bg-blue i,
+.classic-item.bg-cyan i,
+.classic-item.bg-red i,
+.classic-item.bg-green i,
+.classic-item.bg-grey i,
+.classic-item.bg-yellow i,
+.classic-item.bg-orange i,
+.classic-item.bg-teal i,
+.classic-item.bg-blue-light i,
+.classic-item.bg-red-dark i,
+.classic-item.bg-brown i,
+.classic-item.bg-green-bright i,
+.classic-item.bg-blue-dark i,
+.classic-item.bg-red-bright i,
+.classic-item.bg-green-light i { color: #fff; }
+.fullview-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 20% 20%, #0b1225 0%, #0f172a 40%, #1f2937 100%);
+    color: #fff;
+}
+
+.fullview-logo-box {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: #d8261c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+    margin: 0 auto 10px;
+}
+.fullview-logo { width: 78px; height: auto; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.25)); }
+
+.fullview-grid { max-width: 1100px; gap: 24px; }
+.fullview-grid .classic-item { width: 150px; height: 150px; border-radius: 18px; }
+.fullview-grid .classic-item i { font-size: 38px; }
+.fullview-grid .classic-item span { font-size: 12px; }
+
+.fullview-container .classic-header .classic-subtitle { color: #e5e7eb; opacity: 0.9; }
+.fullview-container .classic-header .classic-title { color: #ffffff; }
+.fullview-container .classic-url { color: #cbd5e1; opacity: 0.9; }
+
+.classic-item.neutral { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; }
+.classic-item.neutral i { color: #ffffff; }
+.classic-item.neutral:hover { border-color: rgba(255,255,255,0.28); box-shadow: 0 10px 20px rgba(0,0,0,0.35); }
