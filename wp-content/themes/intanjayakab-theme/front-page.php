@@ -49,7 +49,7 @@
             $href = $it['link'] ? $it['link'] : '#';
             $classes = 'classic-item';
             if (!empty($it['color'])) { $classes .= ' ' . esc_attr($it['color']); }
-            echo '<a href="'.esc_url($href).'" class="'.$classes.'"><i class="'.esc_attr($icon).'"></i><span>'.esc_html($it['title']).'</span></a>';
+            echo '<a href="'.esc_url($href).'" class="'.$classes.'" target="_blank" rel="noopener noreferrer"><i class="'.esc_attr($icon).'"></i><span>'.esc_html($it['title']).'</span></a>';
         }
         ?>
     </main>
@@ -63,7 +63,7 @@
             $href = $it['link'] ? $it['link'] : '#';
             $classes = 'classic-item';
             if (!empty($it['color'])) { $classes .= ' ' . esc_attr($it['color']); } else { $classes .= ' neutral'; }
-            echo '<a href="'.esc_url($href).'" class="'.$classes.'"><i class="'.esc_attr($icon).'"></i><span>'.esc_html($it['title']).'</span></a>';
+            echo '<a href="'.esc_url($href).'" class="'.$classes.'" target="_blank" rel="noopener noreferrer"><i class="'.esc_attr($icon).'"></i><span>'.esc_html($it['title']).'</span></a>';
         }
         ?>
     </section>
