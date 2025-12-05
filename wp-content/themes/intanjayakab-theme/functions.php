@@ -4,6 +4,9 @@ function intanjayakab_scripts() {
     wp_enqueue_style( 'intanjayakab-custom-style', get_template_directory_uri() . '/assets/css/custom.css', array(), '1.0.0' );
     // Enqueue FontAwesome for icons
     wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css' );
+    if ( is_front_page() ) {
+        wp_enqueue_script( 'intanjayakab-home', get_template_directory_uri() . '/assets/js/home.js', array(), '1.0.0', true );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'intanjayakab_scripts' );
 
@@ -82,3 +85,22 @@ function intanjayakab_ensure_fullview_page() {
     }
 }
 add_action('init','intanjayakab_ensure_fullview_page');
+
+function intanjayakab_register_background_cpt() {
+    register_post_type('site_background', array(
+        'labels' => array(
+            'name' => 'Background',
+            'singular_name' => 'Background',
+            'add_new_item' => 'Tambah Background',
+            'edit_item' => 'Edit Background',
+            'menu_name' => 'Background'
+        ),
+        'public' => false,
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'supports' => array('title','thumbnail'),
+        'menu_position' => 21,
+        'menu_icon' => 'dashicons-format-image'
+    ));
+}
+ 

@@ -18,9 +18,9 @@
     </div>
 
     <header class="classic-header">
-        <p class="classic-subtitle">WEBSITE RESMI PEMERINTAH_S</p>
+        <p class="classic-subtitle">WEBSITE RESMI PEMERINTAH</p>
         <h1 class="classic-title">KABUPATEN INTAN JAYA</h1>
-        <p class="classic-url">www.intanjayakab.go.id</p>
+        <p class="classic-url">"O Ndoma Dangge Inia Hanggia Dua Dia"</p>
     </header>
 
     <main class="classic-grid">
@@ -31,29 +31,46 @@
             'orderby' => 'menu_order',
             'order' => 'ASC'
         ));
-        $i = 0;
+        $items = array();
         if ($q->have_posts()):
-            while ($q->have_posts()):
-                $q->the_post();
-                $icon = get_post_meta(get_the_ID(),'layanan_icon',true);
-                $color = get_post_meta(get_the_ID(),'layanan_color',true);
-                $link = get_post_meta(get_the_ID(),'layanan_link',true);
-                $icon = $icon ? $icon : 'fas fa-circle';
-                $href = $link ? $link : '#';
-                $classes = 'classic-item';
-                if ($color) { $classes .= ' ' . esc_attr($color); }
-                echo '<a href="'.esc_url($href).'" class="'.$classes.'"><i class="'.esc_attr($icon).'"></i><span>'.esc_html(get_the_title()).'</span></a>';
-                $i++;
-                if ($i === 8) { echo '<div class="row-break"></div>'; }
-            endwhile;
-            wp_reset_postdata();
+            while ($q->have_posts()): $q->the_post();
+                $items[] = array(
+                    'title' => get_the_title(),
+                    'icon' => get_post_meta(get_the_ID(),'layanan_icon',true),
+                    'color' => get_post_meta(get_the_ID(),'layanan_color',true),
+                    'link' => get_post_meta(get_the_ID(),'layanan_link',true),
+                );
+            endwhile; wp_reset_postdata();
         endif;
+
+        $first = array_slice($items, 0, 8);
+        foreach ($first as $it) {
+            $icon = $it['icon'] ? $it['icon'] : 'fas fa-circle';
+            $href = $it['link'] ? $it['link'] : '#';
+            $classes = 'classic-item';
+            if (!empty($it['color'])) { $classes .= ' ' . esc_attr($it['color']); }
+            echo '<a href="'.esc_url($href).'" class="'.$classes.'"><i class="'.esc_attr($icon).'"></i><span>'.esc_html($it['title']).'</span></a>';
+        }
         ?>
     </main>
 
+    <?php if (count($items) > 8): ?>
+    <section id="more-services" class="classic-grid more-services" style="display:none;">
+        <?php
+        $rest = array_slice($items, 8);
+        foreach ($rest as $it) {
+            $icon = $it['icon'] ? $it['icon'] : 'fas fa-circle';
+            $href = $it['link'] ? $it['link'] : '#';
+            $classes = 'classic-item';
+            if (!empty($it['color'])) { $classes .= ' ' . esc_attr($it['color']); } else { $classes .= ' neutral'; }
+            echo '<a href="'.esc_url($href).'" class="'.$classes.'"><i class="'.esc_attr($icon).'"></i><span>'.esc_html($it['title']).'</span></a>';
+        }
+        ?>
+    </section>
+    <?php endif; ?>
+
     <div class="classic-btn-wrap">
-        <?php $full = get_page_by_path('tampilan-penuh'); $full_url = $full ? get_permalink($full) : home_url('/tampilan-penuh'); ?>
-        <a href="<?php echo esc_url($full_url); ?>" class="classic-btn"><i class="fas fa-expand-arrows-alt"></i> Lihat Tampilan Penuh</a>
+        <a href="#more-services" class="classic-btn" data-toggle="more-services"><i class="fas fa-expand-arrows-alt"></i> Lihat Tampilan Penuh</a>
     </div>
 
     <footer class="classic-footer">
