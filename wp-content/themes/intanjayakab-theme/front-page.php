@@ -73,6 +73,7 @@
         <a href="#more-services" class="classic-btn" data-toggle="more-services"><i class="fas fa-expand-arrows-alt"></i> Lihat Tampilan Penuh</a>
     </div>
 
+
     <footer class="classic-footer">
         <p>© 2010 - 2025 Pemerintah Kabupaten Intan Jaya • All Rights Reserved</p>
     </footer>

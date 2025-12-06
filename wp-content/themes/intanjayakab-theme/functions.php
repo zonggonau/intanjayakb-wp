@@ -148,11 +148,13 @@ add_action('add_meta_boxes','intanjayakab_dokumen_metabox');
 
 function intanjayakab_dokumen_fields_render($post) {
     $file = get_post_meta($post->ID,'dokumen_file',true);
+    $desc = get_post_meta($post->ID,'dokumen_deskripsi',true);
     wp_nonce_field('dokumen_fields_nonce','dokumen_fields_nonce');
     wp_enqueue_media();
     echo '<p><label>File Dokumen</label><br>';
     echo '<input type="text" id="dokumen_file" name="dokumen_file" value="'.esc_attr($file).'" placeholder="https://.../dokumen.pdf" style="width:70%" /> ';
     echo '<button type="button" class="button" id="dokumen_file_btn">Pilih dari Media</button></p>';
+    echo '<p><label>Deskripsi</label><br><textarea name="dokumen_deskripsi" rows="4" style="width:100%">'.esc_textarea($desc).'</textarea></p>';
     echo '<script type="text/javascript">jQuery(function($){var frame;$("#dokumen_file_btn").on("click",function(e){e.preventDefault();if(frame){frame.open();return;}frame=wp.media({title:"Pilih Dokumen",button:{text:"Gunakan File"},multiple:false});frame.on("select",function(){var attachment=frame.state().get("selection").first().toJSON();$("#dokumen_file").val(attachment.url);});frame.open();});});</script>';
 }
 
@@ -163,7 +165,9 @@ function intanjayakab_dokumen_save($post_id) {
         if (!current_user_can('edit_post',$post_id)) return;
     }
     $file = isset($_POST['dokumen_file']) ? esc_url_raw($_POST['dokumen_file']) : '';
+    $desc = isset($_POST['dokumen_deskripsi']) ? sanitize_textarea_field($_POST['dokumen_deskripsi']) : '';
     update_post_meta($post_id,'dokumen_file',$file);
+    update_post_meta($post_id,'dokumen_deskripsi',$desc);
 }
 add_action('save_post','intanjayakab_dokumen_save');
 function intanjayakab_register_background_cpt() {
@@ -189,6 +193,14 @@ register_post_meta('dokumen_publik','dokumen_file', array(
     'single' => true,
     'show_in_rest' => true,
     'sanitize_callback' => 'esc_url_raw',
+    'auth_callback' => '__return_true'
+));
+
+register_post_meta('dokumen_publik','dokumen_deskripsi', array(
+    'type' => 'string',
+    'single' => true,
+    'show_in_rest' => true,
+    'sanitize_callback' => 'sanitize_textarea_field',
     'auth_callback' => '__return_true'
 ));
 
@@ -233,6 +245,7 @@ function intanjayakab_rest_get_dokumen(WP_REST_Request $req) {
             $q->the_post();
             $id = get_the_ID();
             $file = get_post_meta($id,'dokumen_file',true);
+            $desc = get_post_meta($id,'dokumen_deskripsi',true);
             $terms = wp_get_post_terms($id,'dokumen_kategori');
             $cats = array();
             foreach ($terms as $t) {
@@ -242,6 +255,7 @@ function intanjayakab_rest_get_dokumen(WP_REST_Request $req) {
                 'id' => $id,
                 'title' => get_the_title(),
                 'file_url' => $file ?: '',
+                'description' => $desc ?: '',
                 'permalink' => get_permalink($id),
                 'categories' => $cats
             );
